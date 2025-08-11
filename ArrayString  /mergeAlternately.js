@@ -1,4 +1,5 @@
-/* You are given two strings word1 and word2. Merge the strings by adding letters in alternating order, starting with word1. If a string is longer than the other, append the additional letters onto the end of the merged string.
+/** 1768. Merge Strings Alternately
+ * You are given two strings word1 and word2. Merge the strings by adding letters in alternating order, starting with word1. If a string is longer than the other, append the additional letters onto the end of the merged string.
 
 Return the merged string.
 
@@ -25,6 +26,7 @@ Explanation: Notice that as word1 is longer, "cd" is appended to the end.
 word1:  a   b   c   d
 word2:    p   q 
 merged: a p b q c   d
+
  */
 
 /**
@@ -33,25 +35,18 @@ merged: a p b q c   d
  * @return {string}
  */
 var mergeAlternately = function(word1, word2) {
-    let result = []
-    let arrWord1 = word1.split("")
-    let arrWord2 = word2.split("")
-
-    while( arrWord1.length || arrWord2.length ) {
-        
-        if ( arrWord1 ) {
-           result.push(arrWord1.shift()) 
+    let mergedArray = [];
+    // Iterate both arrays with a for loop
+    for( let i = 0; i < word1.length || i < word2.length; i++ ) {
+        // If there's still a char in word1, push it to the result
+        if( word1[i] !== null ) {
+            mergedArray.push(word1[i])
         }
-
-        if ( arrWord2 ) {
-           result.push(arrWord2.shift()) 
+        // If there's still a char in word2, push it to the result
+        if( word2[i] !== null ) {
+            mergedArray.push(word2[i])
         }
     }
 
-  
-    return result.join("")
+    return mergedArray.join('')
 };
-
-console.log(mergeAlternately("abc", "pqr"))
-console.log(mergeAlternately("ab", "pqrs"))
-console.log(mergeAlternately("abcd", "pq"))
